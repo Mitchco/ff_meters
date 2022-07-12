@@ -44,23 +44,42 @@
 
 void setupDefaultMeterColours () override
 {
-    setColour (foleys::LevelMeter::lmTextColour,             juce::Colours::lightgrey);
-    setColour (foleys::LevelMeter::lmTextClipColour,         juce::Colours::white);
-    setColour (foleys::LevelMeter::lmTextDeactiveColour,     juce::Colours::darkgrey);
-    setColour (foleys::LevelMeter::lmTicksColour,            juce::Colours::orange);
-    setColour (foleys::LevelMeter::lmOutlineColour,          juce::Colours::orange);
-    setColour (foleys::LevelMeter::lmBackgroundColour,       juce::Colour (0xff050a29));
-    setColour (foleys::LevelMeter::lmBackgroundClipColour,   juce::Colours::red);
-    setColour (foleys::LevelMeter::lmMeterForegroundColour,  juce::Colours::green);
-    setColour (foleys::LevelMeter::lmMeterOutlineColour,     juce::Colours::lightgrey);
-    setColour (foleys::LevelMeter::lmMeterBackgroundColour,  juce::Colours::darkgrey);
-    setColour (foleys::LevelMeter::lmMeterMaxNormalColour,   juce::Colours::lightgrey);
-    setColour (foleys::LevelMeter::lmMeterMaxWarnColour,     juce::Colours::orange);
-    setColour (foleys::LevelMeter::lmMeterMaxOverColour,     juce::Colours::darkred);
-    setColour (foleys::LevelMeter::lmMeterGradientLowColour, juce::Colours::green);
-    setColour (foleys::LevelMeter::lmMeterGradientMidColour, juce::Colours::lightgoldenrodyellow);
-    setColour (foleys::LevelMeter::lmMeterGradientMaxColour, juce::Colours::red);
-    setColour (foleys::LevelMeter::lmMeterReductionColour,   juce::Colours::orange);
+    // setColour (foleys::LevelMeter::lmTextColour,             juce::Colours::lightgrey);
+        // setColour (foleys::LevelMeter::lmTextColour, juce::Colours::white);  // come back to this and maybe reset white
+        setColour(foleys::LevelMeter::lmTextColour, juce::Colour (228,228,228));
+        setColour (foleys::LevelMeter::lmTextClipColour, juce::Colours::white);
+        // setColour (foleys::LevelMeter::lmTextDeactiveColour,     juce::Colours::darkgrey);
+        setColour(foleys::LevelMeter::lmTextDeactiveColour, juce::Colours::white);
+        //setColour (foleys::LevelMeter::lmTicksColour,            juce::Colours::orange);
+        setColour(foleys::LevelMeter::lmTicksColour, juce::Colour (228, 228, 228)); // was 162,162,162
+        // setColour (foleys::LevelMeter::lmOutlineColour,          juce::Colours::orange);
+        setColour(foleys::LevelMeter::lmOutlineColour, juce::Colour());
+        // setColour (foleys::LevelMeter::lmBackgroundColour,       juce::Colour (0xff050a29));
+        setColour (foleys::LevelMeter::lmBackgroundColour, juce::Colour ());
+        //setColour (foleys::LevelMeter::lmBackgroundClipColour,   juce::Colours::red);
+        setColour (foleys::LevelMeter::lmBackgroundClipColour, juce::Colour (250, 85, 56));
+        // setColour (foleys::LevelMeter::lmMeterForegroundColour,  juce::Colours::green);
+        setColour(foleys::LevelMeter::lmMeterForegroundColour, juce::Colour (86, 120, 203));
+
+        // setColour (foleys::LevelMeter::lmMeterOutlineColour,     juce::Colours::lightgrey);
+        setColour(foleys::LevelMeter::lmMeterOutlineColour, juce::Colour());
+        // setColour (foleys::LevelMeter::lmMeterBackgroundColour,  juce::Colours::darkgrey);
+        setColour(foleys::LevelMeter::lmMeterBackgroundColour, juce::Colour (12,12,12));
+        
+        setColour (foleys::LevelMeter::lmMeterMaxNormalColour,   juce::Colours::lightgrey);
+        setColour (foleys::LevelMeter::lmMeterMaxWarnColour,     juce::Colours::orange);
+        setColour (foleys::LevelMeter::lmMeterMaxOverColour,     juce::Colours::darkred);
+
+       /* setColour (foleys::LevelMeter::lmMeterGradientLowColour, juce::Colours::green);
+        setColour (foleys::LevelMeter::lmMeterGradientMidColour, juce::Colours::lightgoldenrodyellow);
+        setColour (foleys::LevelMeter::lmMeterGradientMaxColour, juce::Colours::red);*/
+
+        setColour(foleys::LevelMeter::lmMeterGradientLowColour, juce::Colour (86, 120, 203));
+        setColour(foleys::LevelMeter::lmMeterGradientMidColour, juce::Colour (136, 194, 249));
+        setColour(foleys::LevelMeter::lmMeterGradientMaxColour, juce::Colour (136, 194, 249));
+
+        setColour (foleys::LevelMeter::lmMeterReductionColour,   juce::Colours::orange);
+
 }
 
 void updateMeterGradients () override
@@ -715,7 +734,7 @@ void drawTickMarks (juce::Graphics& g,
         else
         {
             const auto h = (bounds.getHeight() - 2.0f) * 0.05f;
-            g.setFont (h * 0.8f);
+            g.setFont (h * 0.6f); // was 0.8f 20210312 smaller text
             for (int i=0; i<21; ++i) {
                 const auto y = bounds.getY() + i * h;
                 if (i % 2 == 0)
